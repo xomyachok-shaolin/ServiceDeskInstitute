@@ -1,0 +1,73 @@
+unit UnitAddRequisitionService;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Mask, Vcl.DBCtrls, Vcl.StdCtrls,
+  Vcl.DBCGrids, Vcl.ExtCtrls, Data.DB, Data.Win.ADODB;
+
+type
+  TForm6 = class(TForm)
+    Panel10: TPanel;
+    Panel11: TPanel;
+    Panel12: TPanel;
+    Panel13: TPanel;
+    DBCtrlGrid2: TDBCtrlGrid;
+    Panel16: TPanel;
+    DBText1: TDBText;
+    DBMemo2: TDBMemo;
+    Panel17: TPanel;
+    DBText4: TDBText;
+    Panel29: TPanel;
+    Panel28: TPanel;
+    Label5: TLabel;
+    Edit3: TEdit;
+    DBEdit3: TDBEdit;
+    Button1: TButton;
+    Button4: TButton;
+    Panel1: TPanel;
+    Panel2: TPanel;
+    ADOQueryService: TADOQuery;
+    DataSourceService: TDataSource;
+    procedure Button4Click(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form6: TForm6;
+
+implementation
+
+{$R *.dfm}
+uses UnitAuthorization, UnitAddRequisition;
+
+procedure TForm6.Button1Click(Sender: TObject);
+var h1, h2:string;
+
+begin
+  h1 := DBEdit3.Text;
+  h2 := QuotedStr(h1);
+
+  with Form4.ADOQueryService do
+  begin
+    close;
+    SQL.Clear;
+    SQL.Add('select distinct "Наименование", "Описание", "ИД Услуги" from КП_КАТАЛОГ_УСЛУГ where "ИД Услуги"='+h2);
+    open;
+  end;
+
+  Form4.DBEditClient.DataSource.DataSet.Refresh;
+  close;
+end;
+
+procedure TForm6.Button4Click(Sender: TObject);
+begin
+  close;
+end;
+
+end.

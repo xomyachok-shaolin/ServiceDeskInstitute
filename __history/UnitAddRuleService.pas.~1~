@@ -1,0 +1,36 @@
+unit UnitAddRuleService;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls,
+  Vcl.NumberBox;
+
+type
+  TForm12 = class(TForm)
+    Panel3: TPanel;
+    Описание: TLabel;
+    MemoDescription: TMemo;
+    LabeledEditTheme: TLabeledEdit;
+    Panel2: TPanel;
+    Button1: TButton;
+    Button2: TButton;
+    Panel1: TPanel;
+    ComboBox1: TComboBox;
+    ComboBox2: TComboBox;
+    NumberBox1: TNumberBox;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form12: TForm12;
+
+implementation
+
+{$R *.dfm}
+
+end.

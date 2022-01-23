@@ -1,0 +1,51 @@
+unit UnitEditCathegory;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.DBCtrls, Vcl.StdCtrls, Vcl.ExtCtrls,
+  Vcl.Mask, Data.DB, Data.Win.ADODB;
+
+type
+  TForm3 = class(TForm)
+    Panel2: TPanel;
+    Button1: TButton;
+    Button2: TButton;
+    Panel1: TPanel;
+    RadioGroup1: TRadioGroup;
+    Label1: TLabel;
+    DBEdit1: TDBEdit;
+    ADOQueryUser: TADOQuery;
+    ADOStoredProc1: TADOStoredProc;
+    procedure FormCreate(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form3: TForm3;
+
+implementation
+
+{$R *.dfm}
+uses UnitMain, UnitAuthorization;
+
+procedure TForm3.FormCreate(Sender: TObject);
+begin
+  if DBEdit1.Text = 'высока€' then
+  begin
+    RadioGroup1.ItemIndex := 2;
+  end else
+  if DBEdit1.Text = 'средн€€' then
+  begin
+     RadioGroup1.ItemIndex := 1;
+  end else
+  begin
+     RadioGroup1.ItemIndex := 0;
+  end;
+end;
+
+end.
